@@ -41,6 +41,11 @@ This sample module contains one small method - filter_contigs.
         # ctx is the context object
         # return variables are: returnVal
         #BEGIN filter_contigs
+        
+        # Print statements to stdout/stderr are captured and available as the method log
+        print('Starting filter contigs method.')
+        
+
         # Step 1 - Parse/examine the parameters and catch any errors
         # It is important to check that parameters exist and are defined, and that nice error
         # messages are returned to the user
@@ -197,18 +202,15 @@ This sample module contains one small method - filter_contigs.
             }
         
         print('returning:'+pformat(returnVal))
+        return [returnVal]        
         #END filter_contigs
-        # At some point might do deeper type checking...
-        if not isinstance(returnVal, dict):
-            raise ValueError('Method filter_contigs return value ' +
-                             'returnVal is not type dict as required.')
-        # return the results
-        return [returnVal]
 
     def filter_contigs_max(self, ctx, params):
         # ctx is the context object
         # return variables are: returnVal
         #BEGIN filter_contigs_max
+        #END filter_contigs_max
+
         if 'workspace' not in params:
             raise ValueError('Parameter workspace is not set in input arguments')
         workspace_name = params['workspace']
@@ -369,12 +371,9 @@ This sample module contains one small method - filter_contigs.
                 'n_initial_contigs':n_total,
                 'n_contigs_removed':n_total-n_remaining,
                 'n_contigs_remaining':n_remaining
-            }        
+            }
+        
         print('returning:'+pformat(returnVal))
-        #END filter_contigs_max
-        # At some point might do deeper type checking...
-        if not isinstance(returnVal, dict):
-            raise ValueError('Method filter_contigs_max return value ' +
-                             'returnVal is not type dict as required.')
-        # return the results
-        return [returnVal]
+        return [returnVal]        
+     
+       
